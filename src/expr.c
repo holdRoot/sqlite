@@ -207,7 +207,7 @@ CollSeq *sqlite3ExprCollSeq(Parse *pParse, const Expr *pExpr){
         /* The Expr.x union is never used at the same time as Expr.pRight */
         assert( p->x.pList==0 || p->pRight==0 );
         if( p->x.pList!=0 
-         && !db->mallocFailed
+         && ALWAYS(!db->mallocFailed)
          && ALWAYS(!ExprHasProperty(p, EP_xIsSelect))
         ){
           int i;
